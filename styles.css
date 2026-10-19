@@ -424,3 +424,4 @@ body.modal-open { overflow: hidden; }
   .enquiry__submit { width: 100%; }
   .cta-band .btn { width: 100%; }
 }
+.hero .eyebrow, .page-hero .eyebrow { color: var(--brick); }
