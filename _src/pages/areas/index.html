@@ -1,0 +1,80 @@
+<!--meta {
+  "title": "Areas We Cover | TMV Servicing in All London Boroughs",
+  "description": "TMV servicing in all 32 London boroughs and the City of London, grouped into Central, West, North, East and South London, with their main postcodes.",
+  "nav": "areas",
+  "crumbs": [["Areas We Cover", null]],
+  "hero": {
+    "eyebrow": "Areas we cover",
+    "h1": "TMV servicing in every <em>London</em> borough",
+    "lede": "All 32 boroughs and the City of London, from Havering to Hillingdon and Enfield to Croydon. We're based in Chiswick and London is all we do.",
+    "topic": "TMV servicing"
+  },
+  "schema": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "TMV servicing across London",
+      "serviceType": "Thermostatic mixing valve servicing",
+      "provider": "__BUSINESS__",
+      "areaServed": "__AREA_SERVED__",
+      "url": "https://tmvservicing.london/areas/"
+    }
+  ]
+} -->
+    <section class="section">
+      <div class="wrap coverage">
+        <div>
+          <span class="eyebrow">The map, sort of</span>
+          <h2 style="margin-top:14px;font-size:clamp(2rem,3.6vw,2.7rem)">Five patches, 33 local authorities, one team.</h2>
+          <div class="thames-rule" aria-hidden="true"></div>
+          <p style="margin-top:18px;font-size:1.08rem;color:var(--muted)">We split London into five patches so we can plan rounds sensibly and keep engineers working in the same part of town. It's our way of organising the work, not an official boundary, so if you're near a border, don't worry about which page you're on. We cover you either way.</p>
+          <p style="margin-top:14px;color:var(--muted)">The postcode districts listed are the main ones for each borough. Postcodes and borough boundaries don't line up neatly (London never does), so if yours isn't listed, it's almost certainly still covered. Just ask.</p>
+        </div>
+        <div>
+          {{tilemap}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--stone">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Boroughs and postcodes</span>
+          <h2>Every borough we cover, by patch</h2>
+        </div>
+        <div class="regions">
+          {{regions}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Why London-only</span>
+          <h2>Staying inside the M25 is a feature, not a limitation.</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <svg class="icon" aria-hidden="true"><use href="{{root}}assets/icons.svg#pin" /></svg>
+            <h3>Close by</h3>
+            <p>Our engineers start the day in London, not two counties away. Return visits for no-access flats are easier to fit in.</p>
+          </article>
+          <article class="card">
+            <svg class="icon" aria-hidden="true"><use href="{{root}}assets/icons.svg#hardwater" /></svg>
+            <h3>Used to the water</h3>
+            <p>London's hard water is what we deal with every day, so descaling and strainer cleaning are part of the job, not an extra.</p>
+          </article>
+          <article class="card">
+            <svg class="icon" aria-hidden="true"><use href="{{root}}assets/icons.svg#buildings" /></svg>
+            <h3>Used to the buildings</h3>
+            <p>Mansion blocks, converted terraces, estates, towers and listed buildings. We know where TMVs tend to hide in each.</p>
+          </article>
+          <article class="card">
+            <svg class="icon" aria-hidden="true"><use href="{{root}}assets/icons.svg#parking" /></svg>
+            <h3>Used to the parking</h3>
+            <p>CPZs, red routes and loading bays get planned before the visit, so the time you pay for is time spent on valves.</p>
+          </article>
+        </div>
+      </div>
+    </section>
