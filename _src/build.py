@@ -40,7 +40,7 @@ DOMAIN = "https://tmvservicing.london"
 BRAND = "TMV Servicing London"
 PHONE = "020 3633 6064"
 TEL = "+442036336064"
-BUILD_DATE = "2026-10-19"
+BUILD_DATE = "2026-10-20"
 OG_IMAGE = f"{DOMAIN}/assets/og.png"
 LOGO_URL = f"{DOMAIN}/assets/logo.png"
 
