@@ -14,7 +14,9 @@ Placeholders available inside page bodies:
     {{root}}            relative path to site root ("" or "../"), "/" on 404
     {{latest_posts}}    3 newest written posts as cards
     {{blog_list}}       all written posts, newest first
-    {{related:tag}}     up to 3 posts tagged `tag` (falls back to newest), excluding current post
+    {{related:tag}}     up to 3 related posts, excluding the current one. On posts: any
+                        "post.related" slugs first, then the full set ranked by shared
+                        tags (+ bonus for `tag`). Elsewhere: posts tagged `tag`, then newest.
     {{tilemap}}         the 33-tile London coverage grid
     {{regions}}         areas-hub region blocks (all boroughs + postcodes)
     {{boroughs:west}}   borough list for one region
@@ -505,9 +507,25 @@ def render(meta, posts):
 
     def related(m):
         tag = m.group(1)
-        tagged = [p for p in others if tag in p["post"].get("tags", [])]
-        rest = [p for p in others if p not in tagged]
-        chosen = (tagged + rest)[:3]
+        mine = set(meta["post"].get("tags", [])) if meta.get("post") else set()
+
+        def score(p):
+            # On posts: rank the whole set by shared tags (topic tags count double,
+            # region tags single), with a bonus for the block's own tag. Newest wins ties.
+            theirs = set(p["post"].get("tags", []))
+            s = 3 if tag in theirs else 0
+            s += sum(1 if t in REGIONS else 2 for t in mine & theirs)
+            return s
+
+        pinned = []
+        if meta.get("post"):
+            wanted = meta["post"].get("related", [])
+            pinned = [p for slug in wanted for p in others if p["path"] == f"blog/{slug}.html"]
+        if mine:
+            ranked = sorted(others, key=score, reverse=True)  # stable: keeps newest-first within a score
+        else:
+            ranked = [p for p in others if tag in p["post"].get("tags", [])] + [p for p in others if tag not in p["post"].get("tags", [])]
+        chosen = (pinned + [p for p in ranked if p not in pinned])[:3]
         if not chosen:
             return ""
         cards = "\n        ".join(post_card(p, root) for p in chosen)
