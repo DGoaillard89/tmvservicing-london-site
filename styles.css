@@ -294,7 +294,7 @@ strong, b { font-weight: 700; }
 .post-card .link-arrow { margin-top: auto; align-self: start; }
 .post-list { display: grid; gap: 18px; max-width: 900px; }
 .post-list .post-card { flex-direction: row; }
-.post-list .post-card__band { flex-direction: column; justify-content: center; gap: 6px; min-width: 150px; text-align: center; }
+.post-list .post-card__band { flex-direction: column; justify-content: center; gap: 6px; flex: 0 0 170px; padding-inline: 12px; text-align: center; }
 .empty-note { color: var(--muted); }
 
 .post-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; font-family: var(--font-mono); font-size: 0.86rem; color: var(--river); }
