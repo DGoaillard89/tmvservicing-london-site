@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 120" preserveAspectRatio="xMidYMax slice" fill="#143450">
+  <!-- Generic London housing stock: terraces and chimney pots, a mansion block, a church spire, an estate tower, a crane, office blocks. No real landmarks. -->
+  <path d="M0 120V84l18-14 18 14v36zM36 120V84l18-14 18 14v36zM72 120V84l18-14 18 14v36z"/>
+  <rect x="12" y="62" width="5" height="12"/><rect x="48" y="62" width="5" height="12"/><rect x="84" y="62" width="5" height="12"/>
+  <rect x="112" y="58" width="74" height="62"/><rect x="108" y="54" width="82" height="6"/>
+  <rect x="122" y="44" width="10" height="10"/><rect x="166" y="44" width="10" height="10"/>
+  <path d="M206 120V78h10V40l6-22 6 22v38h10v42z"/>
+  <rect x="252" y="22" width="40" height="98"/><rect x="258" y="14" width="10" height="8"/>
+  <rect x="300" y="70" width="30" height="50"/>
+  <path d="M352 120V30h3v90zM340 30h70v4h-70z"/><rect x="398" y="34" width="2" height="20"/>
+  <rect x="372" y="66" width="56" height="54"/>
+  <path d="M440 120V52l26-10v78z"/><rect x="470" y="60" width="34" height="60"/>
+  <path d="M512 120V86l16-12 16 12v34zM544 120V86l16-12 16 12v34zM576 120V86l16-12 16 12v34z"/>
+  <rect x="524" y="66" width="5" height="11"/><rect x="556" y="66" width="5" height="11"/><rect x="588" y="66" width="5" height="11"/>
+  <rect x="616" y="36" width="44" height="84"/><rect x="626" y="28" width="24" height="8"/>
+  <path d="M668 120V74h52v46z"/><rect x="676" y="66" width="8" height="8"/><rect x="702" y="66" width="8" height="8"/>
+</svg>
