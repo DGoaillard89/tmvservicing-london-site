@@ -95,6 +95,7 @@ const PHONE = "020 3633 6064";
     }
     dialog.showModal();
     document.body.classList.add("modal-open");
+    (window.dataLayer = window.dataLayer || []).push({ event: "enquiry_open", topic: topic || "general", page_path: location.pathname });
     form.elements.name.focus();
   }
 
@@ -168,6 +169,13 @@ const PHONE = "020 3633 6064";
     data.postcode = formatPostcode(data.postcode);
     data.enquiryType = ENQUIRY_TYPE;
 
+    // If they arrived from an ad or a tagged link, note it on the lead (consent.js keeps it)
+    const attrib = window.siteTracking?.attribution() || {};
+    const keys = Object.keys(attrib);
+    if (keys.length) {
+      data.message += "\n\n--\nHow they found us: " + keys.map((k) => `${k}=${attrib[k]}`).join(", ");
+    }
+
     submit.disabled = true;
     submit.classList.add("is-sending");
     try {
@@ -180,6 +188,12 @@ const PHONE = "020 3633 6064";
       form.reset();
       form.hidden = true;
       done.hidden = false;
+      (window.dataLayer = window.dataLayer || []).push({
+        event: "generate_lead",
+        enquiry_type: ENQUIRY_TYPE,
+        form_id: "enquiry",
+        page_path: location.pathname,
+      });
     } catch (err) {
       console.error("Enquiry failed:", err);
       errorEl.innerHTML = `Sorry, something went wrong sending your enquiry. Please try again, or call us on <a href="tel:+442036336064">${PHONE}</a>.`;

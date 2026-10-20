@@ -425,3 +425,48 @@ body.modal-open { overflow: hidden; }
   .cta-band .btn { width: 100%; }
 }
 .hero .eyebrow, .page-hero .eyebrow { color: var(--brick); }
+
+/* ---------- Cookie banner (consent.js) ---------- */
+.cc { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 90; max-width: 760px; margin: 0 auto; background: var(--thames); color: var(--white); border-radius: var(--radius); box-shadow: 0 18px 40px rgba(13, 36, 56, 0.35); border-top: 4px solid var(--brick); }
+.cc[hidden] { display: none; }
+.cc__inner { padding: 20px 22px; display: grid; gap: 14px; }
+.cc__title { font-family: var(--font-head); font-size: 1.1rem; margin: 0 0 4px; color: var(--white); }
+.cc__copy p { margin: 0; color: var(--muted-on-dark); font-size: 0.97rem; line-height: 1.5; }
+.cc__copy a { color: var(--river); text-decoration: underline; }
+.cc__choose { display: grid; gap: 10px; }
+.cc__choose[hidden] { display: none; }
+.cc__opt { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; color: var(--muted-on-dark); cursor: pointer; }
+.cc__opt b { color: var(--white); margin-right: 4px; }
+.cc__opt input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--brick); flex: none; }
+.cc__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.cc__btn { font: 700 0.95rem/1 var(--font-body); padding: 12px 18px; border-radius: var(--radius); border: 2px solid var(--brick); background: var(--brick); color: var(--thames); cursor: pointer; }
+.cc__btn:hover { background: var(--brick-strong); border-color: var(--brick-strong); }
+.cc__btn--quiet { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.45); }
+.cc__btn--quiet:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--white); }
+.cc__btn[hidden] { display: none; }
+.cc__btn:focus-visible, .cc__opt input:focus-visible { outline: 3px solid var(--river); outline-offset: 2px; }
+.footer-cookie { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
+.footer-cookie[hidden] { display: none; }
+
+/* ---------- Mobile call / quote bar ---------- */
+.mobile-bar { display: none; }
+@media (max-width: 680px) {
+  .mobile-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); background: var(--thames); box-shadow: 0 -6px 18px rgba(13, 36, 56, 0.25); }
+  .mobile-bar a, .mobile-bar button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; border-radius: var(--radius); font: 700 1rem/1 var(--font-body); text-decoration: none; border: 0; cursor: pointer; }
+  .mobile-bar a { background: transparent; color: var(--white); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.45); }
+  .mobile-bar button { background: var(--brick); color: var(--thames); }
+  .mobile-bar .icon { width: 18px; height: 18px; }
+  body { padding-bottom: 66px; }
+  .cc { left: 8px; right: 8px; bottom: 74px; max-height: calc(100vh - 100px); overflow: auto; }
+}
+
+/* ---------- FAQ page: review date + jump links ---------- */
+.faq-reviewed { margin: 0 0 18px; color: var(--muted); font-size: 0.95rem; }
+.faq-jump { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.faq-jump > span { font-family: var(--font-mono, monospace); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.faq-jump ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.faq-jump a { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); color: var(--thames); font-weight: 700; font-size: 0.95rem; text-decoration: none; }
+.faq-jump a:hover, .faq-jump a:focus-visible { border-color: var(--brick-strong); }
+[id="basics"], [id="guidance"], [id="testing"], [id="legionella"], [id="london"], [id="sources"] { scroll-margin-top: 90px; }
+.section--intro { padding-bottom: 0; }
+.section--after-intro { padding-top: 56px; }

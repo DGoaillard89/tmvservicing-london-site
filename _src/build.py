@@ -484,6 +484,7 @@ def footer(root):
         <div>
           <h2>Useful</h2>
           <ul>
+            <li><a href="{root}about.html">About us</a></li>
             <li><a href="{root}blog/index.html">Blog</a></li>
             <li><a href="{root}faqs.html">FAQs</a></li>
             <li><a href="{root}privacy.html">Privacy notice</a></li>
@@ -492,7 +493,7 @@ def footer(root):
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; <span data-year>2026</span> {BRAND}. All rights reserved.</span>
+        <span>&copy; <span data-year>2026</span> {BRAND}. All rights reserved. <button class="footer-cookie" type="button" data-cookie-settings hidden>Cookie settings</button></span>
         <span>Inside the M25, and specifically inside the 32 boroughs. We're fussy like that.</span>
       </div>
     </div>
@@ -563,6 +564,12 @@ def render(meta, posts):
 
 {foot}
 
+  <div class="mobile-bar">
+    <a href="tel:{TEL}">{PHONE_ICON.format(root=root)} Call us</a>
+    <button type="button" data-open-enquiry>Get a quote</button>
+  </div>
+
+  <script src="{root}consent.js" defer></script>
   <script src="{root}script.js" defer></script>
   <script src="{root}enquiry.js" defer></script>
 </body>
