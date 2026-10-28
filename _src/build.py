@@ -203,7 +203,7 @@ def esc(s):
 def post_card(p, root):
     d = dt.date.fromisoformat(p["post"]["date"])
     return f"""<a class="post-card" href="{root}{p['path']}">
-          <span class="post-card__band"><span>{d.strftime('%b %Y').upper()}</span><b>{esc(p['post'].get('area', 'LONDON'))}</b></span>
+          <span class="post-card__band"><span>{d.day} {d.strftime('%b %Y').upper()}</span><b>{esc(p['post'].get('area', 'LONDON'))}</b></span>
           <span class="post-card__body">
             <h3>{esc(p['post']['headline'])}</h3>
             <p>{esc(p['post']['excerpt'])}</p>
@@ -637,7 +637,13 @@ def main():
     for meta in pages:
         if meta.get("noindex"):
             continue
-        lastmod = meta["post"].get("modified", meta["post"]["date"]) if meta.get("post") else source_lastmod(meta["path"])
+        if meta.get("post"):
+            lastmod = meta["post"].get("modified", meta["post"]["date"])
+        else:
+            lastmod = source_lastmod(meta["path"])
+            # Pages that list the latest posts change whenever a post is published.
+            if posts and ("{{latest_posts}}" in meta["body"] or "{{blog_list}}" in meta["body"]):
+                lastmod = max(lastmod, posts[0]["post"]["date"])
         urls.append(f"  <url><loc>{url_for(meta['path'])}</loc><lastmod>{lastmod}</lastmod></url>")
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
