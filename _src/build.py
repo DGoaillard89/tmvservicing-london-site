@@ -31,6 +31,7 @@ import datetime as dt
 import html
 import json
 import re
+import subprocess
 from pathlib import Path
 
 SRC = Path(__file__).resolve().parent
@@ -40,7 +41,7 @@ DOMAIN = "https://tmvservicing.london"
 BRAND = "TMV Servicing London"
 PHONE = "020 3633 6064"
 TEL = "+442036336064"
-BUILD_DATE = "2026-10-20"
+TODAY = dt.date.today().isoformat()
 OG_IMAGE = f"{DOMAIN}/assets/og.png"
 LOGO_URL = f"{DOMAIN}/assets/logo.png"
 
@@ -114,6 +115,21 @@ PHONE_ICON = '<svg class="icon" aria-hidden="true"><use href="{root}assets/icons
 ARROW_ICON = '<svg class="icon" aria-hidden="true"><use href="{root}assets/icons.svg#arrow" /></svg>'
 
 BUSINESS_SCHEMA_ID = f"{DOMAIN}/#business"
+
+
+def slug(name):
+    """Anchor id for a borough section on its region page, e.g. "Hammersmith and Fulham" -> "hammersmith-and-fulham"."""
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
+def borough_url(root, b):
+    return f'{root}{REGIONS[b[2]]["page"]}#{slug(b[0])}'
+
+
+def borough_codes(name):
+    b = next(b for b in BOROUGHS if b[0] == name)
+    chips = "".join(f'<span class="pc">{c}</span>' for c in b[5].split())
+    return f'<p class="borough__codes" aria-label="Main postcode districts">{chips}</p>'
 
 
 def area_served(region=None):
@@ -200,7 +216,7 @@ def tilemap(root):
     cells = []
     for name, official, region, label, (r, c), codes in BOROUGHS:
         cells.append(
-            f'<a class="tile tile--{region}" href="{root}{REGIONS[region]["page"]}" '
+            f'<a class="tile tile--{region}" href="{root}{REGIONS[region]["page"]}#{slug(name)}" '
             f'style="grid-row:{r + 1};grid-column:{c + 1}" title="{esc(name)}" aria-label="{esc(name)}, {REGIONS[region]["name"]}">{esc(label)}</a>'
         )
     legend = "".join(
@@ -213,11 +229,11 @@ def tilemap(root):
           <p class="tilemap-note">All 32 boroughs plus the City. Not to scale. Squint and it's London.</p>"""
 
 
-def borough_list(region):
+def borough_list(region, root=""):
     items = []
     for name, official, reg, label, pos, codes in sorted([b for b in BOROUGHS if b[2] == region], key=lambda b: b[0]):
         chips = "".join(f'<span class="pc">{c}</span>' for c in codes.split())
-        items.append(f'<li><strong>{esc(name)}</strong><span class="codes">{chips}</span></li>')
+        items.append(f'<li><strong><a href="{root}{REGIONS[reg]["page"]}#{slug(name)}">{esc(name)}</a></strong><span class="codes">{chips}</span></li>')
     return f'<ul class="borough-list">{"".join(items)}</ul>'
 
 
@@ -257,9 +273,18 @@ def regions_block(root):
               <p>{REGION_BLURBS[key]}</p>
               <p style="margin-top:16px"><a class="link-arrow" href="{root}{r['page']}">TMV servicing in {r['name']} {ARROW_ICON.format(root=root)}</a></p>
             </div>
-            {borough_list(key)}
+            {borough_list(key, root)}
           </article>""")
     return "\n".join(out)
+
+
+def where_we_work(root):
+    links = "".join(f'<li><a href="{root}{r["page"]}">{r["name"]}</a></li>' for r in REGIONS.values())
+    return f"""<div class="aside-card">
+            <h3>Where we work</h3>
+            <p>All 32 London boroughs and the City, from our base in Chiswick. <a href="{root}areas/index.html">See every borough we cover</a>.</p>
+            <ul>{links}</ul>
+          </div>"""
 
 
 def cta_box(root):
@@ -543,7 +568,9 @@ def render(meta, posts):
     body = re.sub(r"\{\{blog_list\}\}", blog_list, body)
     body = body.replace("{{tilemap}}", tilemap(root))
     body = body.replace("{{regions}}", regions_block(root))
-    body = re.sub(r"\{\{boroughs:([a-z]+)\}\}", lambda m: borough_list(m.group(1)), body)
+    body = re.sub(r"\{\{boroughs:([a-z]+)\}\}", lambda m: borough_list(m.group(1), root), body)
+    body = re.sub(r"\{\{pc:([^}]+)\}\}", lambda m: borough_codes(m.group(1)), body)
+    body = body.replace("{{where_we_work}}", where_we_work(root))
     body = re.sub(r"\{\{codes:([a-z]+)\}\}", lambda m: region_codes(m.group(1)), body)
     body = body.replace("{{cta}}", cta_box(root))
     body = body.replace("{{arrow}}", ARROW_ICON.format(root=root))
@@ -577,12 +604,27 @@ def render(meta, posts):
 """
 
 
+def source_lastmod(rel):
+    """Real modification date of a page's source: today if it has uncommitted changes,
+    otherwise the date of the last commit that touched it."""
+    path = f"_src/pages/{rel}"
+    try:
+        dirty = subprocess.run(["git", "status", "--porcelain", "--", path], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        if dirty:
+            return TODAY
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", path], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        return out or TODAY
+    except OSError:
+        return TODAY
+
+
 def main():
     pages = [read_page(p) for p in sorted(PAGES.rglob("*.html"))]
-    posts = sorted([p for p in pages if p.get("post")], key=lambda p: p["post"]["date"], reverse=True)
+    # Newest first. "seq" breaks ties when two posts share a date (higher = later).
+    posts = sorted([p for p in pages if p.get("post")], key=lambda p: (p["post"]["date"], p["post"].get("seq", 0)), reverse=True)
     for meta in pages:
-        if len(meta["title"]) > 60:
-            print(f"WARN title {len(meta['title'])} chars: {meta['path']}")
+        if len(meta["title"]) > 60 or len(esc(meta["title"])) > 60:
+            print(f"WARN title {len(meta['title'])} chars ({len(esc(meta['title']))} escaped): {meta['path']}")
         if len(meta["description"]) > 155:
             print(f"WARN description {len(meta['description'])} chars: {meta['path']}")
         if meta.get("post"):
@@ -595,7 +637,7 @@ def main():
     for meta in pages:
         if meta.get("noindex"):
             continue
-        lastmod = meta["post"].get("modified", meta["post"]["date"]) if meta.get("post") else BUILD_DATE
+        lastmod = meta["post"].get("modified", meta["post"]["date"]) if meta.get("post") else source_lastmod(meta["path"])
         urls.append(f"  <url><loc>{url_for(meta['path'])}</loc><lastmod>{lastmod}</lastmod></url>")
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

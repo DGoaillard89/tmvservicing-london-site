@@ -3,6 +3,7 @@
   "description": "TMV servicing and replacement in North London: Barnet, Enfield, Haringey and Waltham Forest. Care homes, schools, HMOs and housing association homes.",
   "nav": "areas",
   "crumbs": [["Areas We Cover", "areas/index.html"], ["North London", null]],
+  "faq_schema": true,
   "hero": {
     "eyebrow": "North London",
     "h1": "TMV servicing in <em>North London</em>",
@@ -36,22 +37,63 @@
           <h3>Housing association and council homes</h3>
           <p>Post-war estates in Edmonton, Tottenham and parts of Barnet, plus sheltered housing schemes across all four boroughs. Sheltered and extra-care schemes tend to have the most TMVs per home, because residents are older and the risk from hot water is higher.</p>
 
+          <h2>North London water</h2>
+          <p>Thames Water supplies most of North London, though Affinity Water supplies some areas towards the outer north-western edge, so check your bill if you're near the Hertfordshire border. Wherever it comes from, the water here is hard, and the scale it leaves is the main reason TMV strainers and check valves clog. <a href="https://www.thameswater.co.uk/help/water-and-waste-help/water-quality/check-your-water-quality" rel="noopener">Thames Water's postcode checker</a> (or your own supplier's) will give you the figure for your address.</p>
+
           <h2>What we typically find</h2>
           <ul>
             <li><strong>Very large valve counts in care settings.</strong> We plan these over several visits to fit around residents' routines and keep every room usable.</li>
-            <li><strong>Hard water scale.</strong> The north of London is supplied from a mix of sources, and it's hard here too. Strainers and check valves need regular cleaning.</li>
+            <li><strong>Scaled strainers and check valves.</strong> Particularly in busy shared bathrooms and care home en-suites, where valves work hard all day.</li>
             <li><strong>Valves on long runs.</strong> Older extensions sometimes have one TMV feeding several distant outlets. We'll flag it, because a long warm pipe run is a Legionella concern.</li>
           </ul>
 
           <h2>Getting around</h2>
           <p>Parking in outer North London is generally easier than in the centre, though town centres like Wood Green, Walthamstow and Finchley have their own CPZs and busy high streets. The North Circular runs right through the patch, so we group visits geographically to avoid spending the morning on it. From Chiswick, we come round on the A406 or up through Brent, which takes us past plenty of other jobs on the way.</p>
 
-          <h2>Boroughs and postcodes in North London</h2>
-          {{boroughs:north}}
+          <h2>TMV servicing borough by borough</h2>
+          <p>Only four boroughs, but they're big ones, and each has its own mix.</p>
+          <div class="boroughs">
+            <section class="borough" id="barnet">
+              <h3>Barnet</h3>{{pc:Barnet}}
+              <p>A large, mostly suburban borough with a lot of care and nursing homes around Finchley, Hendon and Edgware, Middlesex University's campus and halls in Hendon, and the big Brent Cross redevelopment. Parking is easier than inner London, though Finchley and Golders Green town centres have their own controlled zones.</p>
+            </section>
+            <section class="borough" id="enfield">
+              <h3>Enfield</h3>{{pc:Enfield}}
+              <p>Leafy Southgate, Winchmore Hill and Enfield Town in the west, with post-war estates and industrial land along the Lee Valley in Edmonton and Ponders End. Schools, care homes and housing association stock make up much of the TMV work. The A10 and the North Circular are the main routes in.</p>
+            </section>
+            <section class="borough" id="haringey">
+              <h3>Haringey</h3>{{pc:Haringey}}
+              <p>Victorian terraces in Crouch End, Hornsey and Muswell Hill, many split into flats, and denser streets and estates around Wood Green and Tottenham. Plenty of shared houses here, and the council runs property licensing, so tidy TMV records are useful. Spurs match days make parking near the stadium hard work, so we check the fixture list before booking.</p>
+            </section>
+            <section class="borough" id="waltham-forest">
+              <h3>Waltham Forest</h3>{{pc:Waltham Forest}}
+              <p>Walthamstow, Leyton and Leytonstone are mostly Victorian and Edwardian terraces, including the two-storey Warner flats, while Chingford to the north is more suburban. Lots of private rented homes and HMOs, with the council's licensing schemes to keep happy, plus schools and Whipps Cross Hospital.</p>
+            </section>
+          </div>
           <p>Camden and Islington are in our <a href="{{root}}areas/central-london.html">Central London</a> patch, Hackney in <a href="{{root}}areas/east-london.html">East London</a> and Brent and Harrow in <a href="{{root}}areas/west-london.html">West London</a>.</p>
 
+          <h2>North London questions</h2>
+          <div class="faqs">
+            <details class="faq">
+              <summary>Do you service TMVs in care homes in Barnet and Enfield?</summary>
+              <div class="faq__a"><p>Yes, care and nursing homes are a large part of our North London work. We plan the visit around residents' routines, service and test every TMV3 valve, and leave you with records and a register that are easy to find when an inspector asks. Our post on <a href="{{root}}blog/london-care-homes-tmvs-cqc.html">care homes, TMV3 valves and CQC</a> has more.</p></div>
+            </details>
+            <details class="faq">
+              <summary>Can you service school TMVs in North London during the holidays?</summary>
+              <div class="faq__a"><p>Yes, the holidays are usually the best time, because we can get into every washroom without interrupting lessons. It's worth booking early, since summer is when every school wants its building work done. Our article on <a href="{{root}}blog/london-school-tmv-servicing-summer-holidays.html">servicing school TMVs over the summer</a> explains how we plan it.</p></div>
+            </details>
+            <details class="faq">
+              <summary>Is the water hard in North London?</summary>
+              <div class="faq__a"><p>Yes, North London's water is hard, whether it comes from Thames Water or, in some outer areas, Affinity Water. Hard water leaves scale on TMV strainers, check valves and thermostatic elements, so we clean and descale them as part of every service. Your supplier's postcode checker gives the hardness at your address.</p></div>
+            </details>
+            <details class="faq">
+              <summary>We manage HMOs in Haringey and Waltham Forest. Can you cover them all in one go?</summary>
+              <div class="faq__a"><p>Yes. We group houses by area so several can be done in a day, record every valve in one <a href="{{root}}tmv-asset-registers.html">asset register</a>, and send you a report per property. Licensing conditions are set by each council, so check what yours asks for; our job is to make sure the valves work and the records are clear.</p></div>
+            </details>
+          </div>
+
           <h2>Services in North London</h2>
-          <p>We offer <a href="{{root}}tmv-servicing.html">TMV servicing and testing</a>, <a href="{{root}}tmv-installation.html">installation and replacement</a> and <a href="{{root}}tmv-asset-registers.html">asset registers and scheduling</a> across all four boroughs.</p>
+          <p>We offer <a href="{{root}}tmv-servicing.html">TMV servicing and testing</a>, <a href="{{root}}tmv-installation.html">installation and replacement</a> and <a href="{{root}}tmv-asset-registers.html">asset registers and scheduling</a> across all four boroughs. If you look after several sites, our post on <a href="{{root}}blog/tmv-asset-register-london-portfolio.html">building a TMV register for a London portfolio</a> is a good place to start.</p>
 
           {{cta}}
         </article>

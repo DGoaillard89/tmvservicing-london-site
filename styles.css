@@ -256,6 +256,13 @@ strong, b { font-weight: 700; }
 .prose th { background: var(--stone); font-weight: 700; }
 .prose td:first-child { font-weight: 700; }
 .table-scroll { overflow-x: auto; }
+.boroughs { margin-top: 1.2em; display: grid; gap: 14px; }
+.borough { padding: 18px 20px; background: var(--white); border: 1px solid var(--line); border-left: 5px solid var(--brick); border-radius: 0 var(--radius) var(--radius) 0; scroll-margin-top: 120px; }
+.borough:target { box-shadow: 0 0 0 3px var(--brick-soft); }
+.prose .borough h3 { margin-top: 0; font-size: 1.2rem; }
+.borough__codes { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.borough__codes .pc { font-size: 0.72rem; padding: 1px 6px; }
+.borough p + p { margin-top: 0.6em; }
 .callout { padding: 20px 22px; background: var(--brick-soft); border-left: 5px solid var(--brick); border-radius: 0 var(--radius) var(--radius) 0; }
 .callout--river { background: var(--river-soft); border-left-color: var(--thames-3); }
 .callout p + p { margin-top: 0.6em; }
