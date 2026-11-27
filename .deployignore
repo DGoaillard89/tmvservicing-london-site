@@ -1,0 +1,14 @@
+# Files and folders that must NOT be served (rsync --exclude-from in .github/workflows/publish.yml)
+.git/
+.github/
+.gitignore
+.deployignore
+.DS_Store
+__pycache__/
+*.pyc
+_site/
+_src/
+_shots/
+_build-notes.md
+_blog-calendar.md
+README.md

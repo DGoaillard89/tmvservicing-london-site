@@ -24,15 +24,35 @@ Placeholders available inside page bodies:
     {{cta}}             enquiry call-to-action box (for posts)
 
 Posts: put them in _src/pages/blog/<slug>.html with a "post" object in meta
-({"date": "YYYY-MM-DD", "tags": [...], "excerpt": ...}). Only posts that exist
-here are listed anywhere, so unwritten posts are never linked.
+({"date": "YYYY-MM-DD HH:MM", "tags": [...], "excerpt": ...}). "date" is the
+publish datetime in Europe/London local time (date-only means 09:00).
+
+Scheduled publishing: a post is only built once its publish datetime has
+passed. Queued (future) posts get no HTML file (a stale one is deleted) and
+appear nowhere: blog index, homepage, related blocks, sitemap. The build fails
+if any published page links to a queued post. Override "now" for previews:
+    BUILD_NOW="2027-01-15 12:00" python3 _src/build.py
+Output is deterministic (no build-time timestamps), so running it twice gives
+no git diff. A GitHub Action (.github/workflows/publish.yml) runs it on a
+schedule and commits/deploys whatever has become due.
+
+Per-post OG image: if assets/og/<slug>.png exists (rendered locally and
+committed) it's used; otherwise the default assets/og.png.
 """
 import datetime as dt
 import html
 import json
+import os
 import re
 import subprocess
+import sys
 from pathlib import Path
+
+try:
+    from zoneinfo import ZoneInfo
+    LONDON = ZoneInfo("Europe/London")
+except Exception:  # no tz database available: fall back to UK rules below
+    LONDON = None
 
 SRC = Path(__file__).resolve().parent
 ROOT = SRC.parent
@@ -42,6 +62,47 @@ BRAND = "TMV Servicing London"
 PHONE = "020 3633 6064"
 TEL = "+442036336064"
 TODAY = dt.date.today().isoformat()
+
+
+def _last_sunday(year, month):
+    d = dt.date(year, month + 1, 1) - dt.timedelta(days=1) if month < 12 else dt.date(year, 12, 31)
+    return d - dt.timedelta(days=(d.weekday() + 1) % 7)
+
+
+def london_offset(naive):
+    """UTC offset (timedelta) of a Europe/London local datetime."""
+    if LONDON is not None:
+        return naive.replace(tzinfo=LONDON).utcoffset()
+    # BST runs from 01:00 UTC on the last Sunday of March to 01:00 UTC on the last Sunday of October.
+    start = dt.datetime.combine(_last_sunday(naive.year, 3), dt.time(1))
+    end = dt.datetime.combine(_last_sunday(naive.year, 10), dt.time(1))
+    return dt.timedelta(hours=1) if start <= naive < end else dt.timedelta(0)
+
+
+def parse_local(s):
+    """'YYYY-MM-DD HH:MM' (or date only = 09:00) in London local time -> aware datetime."""
+    s = s.strip().replace("T", " ")
+    naive = dt.datetime.fromisoformat(s if " " in s else s + " 09:00")
+    return naive.replace(tzinfo=dt.timezone(london_offset(naive)))
+
+
+def build_now():
+    env = os.environ.get("BUILD_NOW", "").strip()
+    if env:
+        return parse_local(env)
+    return dt.datetime.now(dt.timezone.utc)
+
+
+def post_dt(p):
+    return parse_local(p["post"]["date"])
+
+
+def post_day(p):
+    return p["post"]["date"][:10]
+
+
+def iso_local(s):
+    return parse_local(s).isoformat()
 OG_IMAGE = f"{DOMAIN}/assets/og.png"
 LOGO_URL = f"{DOMAIN}/assets/logo.png"
 
@@ -192,7 +253,7 @@ def url_for(path):
 
 
 def nice_date(iso):
-    d = dt.date.fromisoformat(iso)
+    d = dt.date.fromisoformat(iso[:10])
     return f"{d.day} {d.strftime('%B %Y')}"
 
 
@@ -201,7 +262,7 @@ def esc(s):
 
 
 def post_card(p, root):
-    d = dt.date.fromisoformat(p["post"]["date"])
+    d = dt.date.fromisoformat(post_day(p))
     return f"""<a class="post-card" href="{root}{p['path']}">
           <span class="post-card__band"><span>{d.day} {d.strftime('%b %Y').upper()}</span><b>{esc(p['post'].get('area', 'LONDON'))}</b></span>
           <span class="post-card__body">
@@ -295,6 +356,16 @@ def cta_box(root):
         </div>"""
 
 
+def og_image(meta):
+    """Per-post OG card if one has been rendered and committed, else the site default.
+    (CI never renders images, so a missing file just means the default.)"""
+    if meta.get("post"):
+        stem = Path(meta["path"]).stem
+        if (ROOT / "assets" / "og" / f"{stem}.png").exists():
+            return f"{DOMAIN}/assets/og/{stem}.png"
+    return OG_IMAGE
+
+
 # --------------------------------------------------------------------------
 def head(meta, root):
     url = url_for(meta["path"])
@@ -328,11 +399,11 @@ def head(meta, root):
             "@type": "BlogPosting",
             "headline": p["headline"],
             "description": desc,
-            "datePublished": p["date"],
-            "dateModified": p.get("modified", p["date"]),
+            "datePublished": iso_local(p["date"]),
+            "dateModified": iso_local(p.get("modified", p["date"])),
             "author": {"@type": "Organization", "name": BRAND, "url": f"{DOMAIN}/"},
             "publisher": {"@type": "Organization", "name": BRAND, "logo": {"@type": "ImageObject", "url": LOGO_URL}},
-            "image": OG_IMAGE,
+            "image": og_image(meta),
             "mainEntityOfPage": {"@type": "WebPage", "@id": url},
             "inLanguage": "en-GB",
         })
@@ -354,14 +425,14 @@ def head(meta, root):
   <meta property="og:title" content="{esc(meta.get('og_title', title))}" />
   <meta property="og:description" content="{esc(desc)}" />
   <meta property="og:url" content="{url}" />
-  <meta property="og:image" content="{OG_IMAGE}" />
+  <meta property="og:image" content="{og_image(meta)}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="TMV Servicing London: thermostatic mixing valve servicing across all 32 boroughs and the City" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{esc(meta.get('og_title', title))}" />
   <meta name="twitter:description" content="{esc(desc)}" />
-  <meta name="twitter:image" content="{OG_IMAGE}" />
+  <meta name="twitter:image" content="{og_image(meta)}" />
   <meta name="theme-color" content="#0d2438" />
   <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png" />
@@ -433,7 +504,7 @@ def page_hero(meta, root):
     if meta.get("post"):
         p = meta["post"]
         meta_line = (
-            f'<p class="post-meta"><time datetime="{p["date"]}">{nice_date(p["date"])}</time>'
+            f'<p class="post-meta"><time datetime="{iso_local(p["date"])}">{nice_date(p["date"])}</time>'
             f'<span>By {BRAND}</span><span>{p.get("read", "6 min read")}</span></p>'
         )
     actions = ""
@@ -619,9 +690,29 @@ def source_lastmod(rel):
 
 
 def main():
-    pages = [read_page(p) for p in sorted(PAGES.rglob("*.html"))]
-    # Newest first. "seq" breaks ties when two posts share a date (higher = later).
-    posts = sorted([p for p in pages if p.get("post")], key=lambda p: (p["post"]["date"], p["post"].get("seq", 0)), reverse=True)
+    now = build_now()
+    all_pages = [read_page(p) for p in sorted(PAGES.rglob("*.html"))]
+    # Scheduled publishing: posts whose publish datetime is still in the future are queued.
+    queued = [p for p in all_pages if p.get("post") and post_dt(p) > now]
+    pages = [p for p in all_pages if p not in queued]
+    for q in queued:
+        stale = ROOT / q["path"]
+        if stale.exists():
+            stale.unlink()
+            print(f"Removed stale preview of queued post: {q['path']}")
+        print(f"Queued (not built until {q['post']['date']} London): {q['path']}")
+    # Newest first. "seq" breaks ties when two posts share a datetime (higher = later).
+    posts = sorted([p for p in pages if p.get("post")], key=lambda p: (post_dt(p), p["post"].get("seq", 0)), reverse=True)
+    # Never link to a queued post from anything that is published.
+    bad = []
+    for meta in pages:
+        for q in queued:
+            name = Path(q["path"]).name
+            if re.search(r'(?:blog/|["\'/])' + re.escape(name) + r'(?:[#"\'?])', meta["body"]):
+                bad.append(f"{meta['path']} -> {q['path']}")
+    if bad:
+        print("ERROR: published pages link to queued posts:\n  " + "\n  ".join(bad))
+        sys.exit(1)
     for meta in pages:
         if len(meta["title"]) > 60 or len(esc(meta["title"])) > 60:
             print(f"WARN title {len(meta['title'])} chars ({len(esc(meta['title']))} escaped): {meta['path']}")
@@ -638,12 +729,12 @@ def main():
         if meta.get("noindex"):
             continue
         if meta.get("post"):
-            lastmod = meta["post"].get("modified", meta["post"]["date"])
+            lastmod = meta["post"].get("modified", meta["post"]["date"])[:10]
         else:
             lastmod = source_lastmod(meta["path"])
             # Pages that list the latest posts change whenever a post is published.
             if posts and ("{{latest_posts}}" in meta["body"] or "{{blog_list}}" in meta["body"]):
-                lastmod = max(lastmod, posts[0]["post"]["date"])
+                lastmod = max(lastmod, post_day(posts[0]))
         urls.append(f"  <url><loc>{url_for(meta['path'])}</loc><lastmod>{lastmod}</lastmod></url>")
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

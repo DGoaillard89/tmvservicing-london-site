@@ -1,3 +1,5 @@
 _build-notes.md
 .DS_Store
 _shots/
+__pycache__/
+_site/
