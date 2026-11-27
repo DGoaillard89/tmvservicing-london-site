@@ -7,7 +7,12 @@ through the week of Monday 22 Nov 2027. Times are Europe/London local time and g
 Rules for whoever writes these: London-only angles (this is the London brand; tmv-servicing.com does national/general
 topics), friendly blog voice (see `_rollout-brief/COMMON.md`), 700-1,100 words, CTA, links to service pages and only to
 posts already published by the new post's publish time (the build fails otherwise). Scenarios are illustrative, never
-real jobs. No invented stats. Re-check sister sites' blogs (and tmv-servicing.com's calendar if one exists) before writing.
+real jobs. No invented stats. Re-check sister sites' blogs and calendars before writing.
+
+Sister-site calendars checked (27 Nov 2026): ../tmv-servicing.com/_blog-calendar.md (national, no London angles) and
+../Legionella Risk Assessments.com APP/_blog-calendar.md plus its blog/. Weeks 4, 7, 10, 19, 24, 26, 27, 33, 35, 37, 40
+and 49 were replaced to avoid overlap with those. Agreed with the reviewer: week 3 (older relatives at Christmas) and
+week 9 (mosque ablution areas) stay here; the national site drops its versions.
 
 Already published (don't repeat): winter cold water; hard water and limescale; school summer holidays; HMO licensing;
 hotels; care homes and CQC; HTM 04-01 clinics; CPZ/parking access; Awaab's Law; mansion blocks and high-rises; leisure
@@ -43,12 +48,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 4 (w/c 21 Dec 2026): Mon 21 Dec 2026, 08:22
-- **Title:** How to read a TMV service report (without a dictionary)
-- **Slug:** `how-to-read-tmv-service-report` (`"date": "2026-12-21 08:22"`)
-- **Search intent:** What do the readings, set points and fail-safe results on a TMV service report actually mean?
-- **Seasonal hook:** Christmas week, a short read while things are quiet.
-- **Supports:** TMV servicing (tmv-servicing.html), Asset registers & scheduling (tmv-asset-registers.html)
-- **Angle:** Field-by-field explainer of our report: mixed temp, hot/cold supply, fail-safe pass, strainers, actions. What to chase and what to file.
+- **Title:** Warehouse and live-work conversions in Hackney and Tower Hamlets: where TMVs fit
+- **Slug:** `tmvs-warehouse-live-work-conversions-london` (`"date": "2026-12-21 08:22"`)
+- **Search intent:** How are TMVs planned and serviced in converted warehouses and live-work units?
+- **Seasonal hook:** Christmas week, a longer read while things are quiet.
+- **Supports:** Installation (tmv-installation.html), TMV servicing (tmv-servicing.html)
+- **Angle:** Long pipe runs from old plant spaces, mezzanine bathrooms, exposed services and mixed residential/workspace use in East London conversions. Area links to Hackney and Tower Hamlets.
 - **Status:** planned
 
 ### Week 5 (w/c 28 Dec 2026): Wed 30 Dec 2026, 11:58
@@ -70,12 +75,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 7 (w/c 11 Jan 2027): Fri 15 Jan 2027, 12:37
-- **Title:** Very hot water or a scald reported in a London rental: the first 24 hours
-- **Slug:** `scald-reported-london-rental-first-24-hours` (`"date": "2027-01-15 12:37"`)
-- **Search intent:** A tenant has reported scalding water or a burn. What should a London landlord or agent do straight away?
-- **Seasonal hook:** January, when the coldest weeks bring the hottest baths.
-- **Supports:** Compliance guide (tmv-compliance.html), TMV servicing (tmv-servicing.html)
-- **Angle:** Make it safe, record it, isolate, get the valve tested, talk to the tenant. Careful on legal duties (no invented timescales); signpost to HHSRS and the council where relevant.
+- **Title:** The London Plan's 105-litre rule: low-flow fittings and TMVs in new homes
+- **Slug:** `london-plan-water-efficiency-low-flow-tmvs` (`"date": "2027-01-15 12:37"`)
+- **Search intent:** Do low-flow showers and taps in water-efficient London new-builds cause TMV problems?
+- **Seasonal hook:** January, when first-winter complaints come in from new-build residents.
+- **Supports:** Installation (tmv-installation.html), TMV servicing (tmv-servicing.html)
+- **Angle:** London Plan Policy SI 5 sets new homes at 105 litres per person per day. Flow-restricted outlets vs TMV minimum flow rates, what that feels like at the shower, and how to specify valves that cope.
 - **Status:** planned
 
 ### Week 8 (w/c 18 Jan 2027): Mon 18 Jan 2027, 18:04
@@ -97,12 +102,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 10 (w/c 1 Feb 2027): Sat 6 Feb 2027, 09:03
-- **Title:** Banging pipes when a tap shuts: water hammer and TMVs in London buildings
-- **Slug:** `water-hammer-tmvs-london-buildings` (`"date": "2027-02-06 09:03"`)
-- **Search intent:** Why do pipes bang when a TMV-fed tap or shower turns off, and can it damage the valve?
-- **Seasonal hook:** Cold February mornings when demand peaks and pressures jump.
+- **Title:** Basement and lower-ground flats in London: TMV access, damp and flooding
+- **Slug:** `basement-flats-tmvs-london` (`"date": "2027-02-06 09:03"`)
+- **Search intent:** What's different about TMVs in London basement and lower-ground flats?
+- **Seasonal hook:** February rain and the risk of basement flooding.
 - **Supports:** TMV servicing (tmv-servicing.html), Installation (tmv-installation.html)
-- **Angle:** What water hammer is, why mains-pressure London flats get it, what it does to check valves and elements, and the usual fixes (arrestors, pressure reduction).
+- **Angle:** Tight vaults and under-pavement spaces, damp on valve bodies, pumped drainage, checking valves after a flood. Kensington, Chelsea and Islington period stock.
 - **Status:** planned
 
 ### Week 11 (w/c 8 Feb 2027): Tue 9 Feb 2027, 14:49
@@ -180,12 +185,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 19 (w/c 5 Apr 2027): Sat 10 Apr 2027, 10:52
-- **Title:** Thermostatic shower mixers vs TMVs in London flats: which need servicing?
-- **Slug:** `thermostatic-shower-mixer-vs-tmv-london-flats` (`"date": "2027-04-10 10:52"`)
-- **Search intent:** Is my thermostatic shower mixer a TMV, and does it need servicing too?
-- **Seasonal hook:** Spring tidy-up of bathrooms.
-- **Supports:** TMV servicing (tmv-servicing.html), Installation (tmv-installation.html)
-- **Angle:** Bar mixers, concealed thermostatic showers and separate TMVs explained. What we service and what we'd just check. Not a TMV2 vs TMV3 post.
+- **Title:** Build-to-rent blocks in London: TMVs across hundreds of flats
+- **Slug:** `build-to-rent-tmvs-london` (`"date": "2027-04-10 10:52"`)
+- **Search intent:** How should build-to-rent operators run TMV servicing across a large block with on-site teams?
+- **Seasonal hook:** Spring lettings season.
+- **Supports:** Asset registers & scheduling (tmv-asset-registers.html), TMV servicing (tmv-servicing.html)
+- **Angle:** On-site resident teams, booking access through apps and concierge, servicing between tenancies, single-owner records. Wembley, Stratford and Greenwich Peninsula style schemes, no named operators.
 - **Status:** planned
 
 ### Week 20 (w/c 12 Apr 2027): Mon 12 Apr 2027, 13:38
@@ -225,12 +230,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 24 (w/c 10 May 2027): Wed 12 May 2027, 16:46
-- **Title:** Hand wash basins in London restaurant kitchens: where TMVs come in
-- **Slug:** `restaurant-kitchen-hand-wash-tmvs-london` (`"date": "2027-05-12 16:46"`)
-- **Search intent:** Should commercial kitchen hand wash basins have TMVs?
-- **Seasonal hook:** Spring/summer trade and EHO visits.
-- **Supports:** Installation (tmv-installation.html), Compliance guide (tmv-compliance.html)
-- **Angle:** Warm water for handwashing, instantaneous heaters, TMVs where scalding is a risk, keeping them serviced in greasy, busy kitchens. No invented EHO criteria.
+- **Title:** Businesses in London railway arches: TMVs under the arches
+- **Slug:** `railway-arch-businesses-tmvs-london` (`"date": "2027-05-12 16:46"`)
+- **Search intent:** What should gyms, cafés, nurseries and workshops in railway arches know about their TMVs?
+- **Seasonal hook:** Summer trading season under the arches.
+- **Supports:** TMV servicing (tmv-servicing.html), Installation (tmv-installation.html)
+- **Angle:** Cold, damp arch spaces, long supplies, landlord vs tenant responsibilities in general terms, small welfare areas and showers. Very London, light tone.
 - **Status:** planned
 
 ### Week 25 (w/c 17 May 2027): Sat 22 May 2027, 09:29
@@ -243,23 +248,23 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 26 (w/c 24 May 2027): Mon 24 May 2027, 14:03
-- **Title:** TMV myths we hear in London buildings
-- **Slug:** `tmv-myths-london-buildings` (`"date": "2027-05-24 14:03"`)
-- **Search intent:** Common misunderstandings about TMVs, and the truth behind them.
-- **Seasonal hook:** Late May bank holiday reading.
-- **Supports:** TMV servicing (tmv-servicing.html), Compliance guide (tmv-compliance.html)
-- **Angle:** 'Just turn it up', 'it's only the hard water', 'new valves don't need servicing', 'the plumber can bypass it'. Light-hearted but accurate.
+- **Title:** No access, no service? Getting into every flat on a London estate
+- **Slug:** `no-access-tmv-servicing-london-estates` (`"date": "2027-05-24 14:03"`)
+- **Search intent:** How do landlords get access to every flat for TMV servicing, and what happens with no-access properties?
+- **Seasonal hook:** Late May bank holiday, ahead of summer programmes.
+- **Supports:** Asset registers & scheduling (tmv-asset-registers.html), TMV servicing (tmv-servicing.html)
+- **Angle:** Letters, appointment windows, evening slots, resident liaison, multilingual notices, recording no-access and following up. Not legal advice on access rights.
 - **Status:** planned
 
 ## Batch 3 (Jun – Aug 2027)
 
 ### Week 27 (w/c 31 May 2027): Fri 4 Jun 2027, 07:18
-- **Title:** Heatwave in London: warm cold water in top-floor flats and TMVs
-- **Slug:** `heatwave-warm-cold-water-top-floor-tmvs` (`"date": "2027-06-04 07:18"`)
-- **Search intent:** What happens to TMVs when the cold water supply gets warm in a heatwave?
-- **Seasonal hook:** First hot spell of summer.
-- **Supports:** TMV servicing (tmv-servicing.html), Compliance guide (tmv-compliance.html)
-- **Angle:** Warm risers and roof tanks in London blocks, less cooling for the TMV, temperature creep, and the Legionella angle on cold water above 20°C. TMV-focused, not a general Legionella post.
+- **Title:** Garden annexes and outbuildings in London: TMVs in granny flats and garden rooms
+- **Slug:** `garden-annexe-outbuilding-tmvs-london` (`"date": "2027-06-04 07:18"`)
+- **Search intent:** Does a garden annexe or garden room with a shower need a TMV, and how should it be fed?
+- **Seasonal hook:** Summer is building season for garden rooms.
+- **Supports:** Installation (tmv-installation.html)
+- **Angle:** Long buried supplies from the house, small water heaters, who uses them (older relatives, teenagers, guests) and keeping them working through winter. Outer London gardens.
 - **Status:** planned
 
 ### Week 28 (w/c 7 Jun 2027): Tue 8 Jun 2027, 18:27
@@ -308,12 +313,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 33 (w/c 12 Jul 2027): Fri 16 Jul 2027, 08:39
-- **Title:** Low pressure on the top floor: TMVs in London walk-ups and conversions
-- **Slug:** `low-pressure-top-floor-tmvs-london` (`"date": "2027-07-16 08:39"`)
-- **Search intent:** Why does a TMV misbehave on the top floor of a London block with poor pressure?
-- **Seasonal hook:** Summer evenings when everyone's showering and pressure drops.
-- **Supports:** TMV servicing (tmv-servicing.html), Installation (tmv-installation.html)
-- **Angle:** Unbalanced supplies, tank-fed hot vs mains cold, what the valve needs, and fixes (balanced supplies, pumps, the right valve type).
+- **Title:** Converting a London house into an HMO: planning TMVs at design stage
+- **Slug:** `hmo-conversion-tmv-design-london` (`"date": "2027-07-16 08:39"`)
+- **Search intent:** Where should TMVs go when converting a London house into an HMO?
+- **Seasonal hook:** Summer, when conversions are planned for September lets.
+- **Supports:** Installation (tmv-installation.html), Compliance guide (tmv-compliance.html)
+- **Angle:** Article 4 HMO planning controls in many London boroughs mentioned carefully, bathroom layouts, en-suites, shared kitchens, access panels and records. Complements, not repeats, the HMO licensing post.
 - **Status:** planned
 
 ### Week 34 (w/c 19 Jul 2027): Tue 20 Jul 2027, 15:24
@@ -326,12 +331,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 35 (w/c 26 Jul 2027): Thu 29 Jul 2027, 09:51
-- **Title:** Dementia-friendly bathrooms in London extra care housing
-- **Slug:** `dementia-friendly-bathrooms-tmvs-extra-care-london` (`"date": "2027-07-29 09:51"`)
-- **Search intent:** How do TMVs fit into dementia-friendly bathroom design in extra care housing?
-- **Seasonal hook:** Summer refurbishment windows.
-- **Supports:** Installation (tmv-installation.html), Compliance guide (tmv-compliance.html)
-- **Angle:** Familiar controls, contrasting colours, TMV3 set points, and keeping residents' independence. Avoids repeating the care home CQC post.
+- **Title:** Shared ownership flats in London: who pays for the TMV service?
+- **Slug:** `shared-ownership-tmv-servicing-london` (`"date": "2027-07-29 09:51"`)
+- **Search intent:** In a shared ownership flat, who is responsible for TMVs inside the flat and in communal areas?
+- **Seasonal hook:** Summer, when many shared ownership buyers complete.
+- **Supports:** Compliance guide (tmv-compliance.html), Asset registers & scheduling (tmv-asset-registers.html)
+- **Angle:** General principles (lease terms decide, check your lease), what housing associations usually cover, what to ask. Not legal advice.
 - **Status:** planned
 
 ### Week 36 (w/c 2 Aug 2027): Wed 4 Aug 2027, 13:57
@@ -344,12 +349,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 37 (w/c 9 Aug 2027): Sat 14 Aug 2027, 11:43
-- **Title:** What we look for when we open up a TMV
-- **Slug:** `what-we-look-for-opening-up-a-tmv` (`"date": "2027-08-14 11:43"`)
-- **Search intent:** What does an engineer actually check inside a TMV on a service visit?
-- **Seasonal hook:** Quiet August, a good time for an explainer.
-- **Supports:** TMV servicing (tmv-servicing.html)
-- **Angle:** Strainers, check valves, element, seals, scale, signs of tampering. Photos-style walk through, London scale flavour.
+- **Title:** Roll-top baths in London period flats: fitting a TMV without spoiling the look
+- **Slug:** `roll-top-bath-tmv-period-flats-london` (`"date": "2027-08-14 11:43"`)
+- **Search intent:** How can a TMV be fitted to a freestanding roll-top bath?
+- **Seasonal hook:** August, a popular time for bathroom refits.
+- **Supports:** Installation (tmv-installation.html)
+- **Angle:** Floor-standing and wall-mounted bath fillers, concealed TMVs under floors or in walls, access for servicing, and Part G for new baths. Victorian and Edwardian London homes.
 - **Status:** planned
 
 ### Week 38 (w/c 16 Aug 2027): Sun 22 Aug 2027, 16:18
@@ -373,12 +378,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 ## Batch 4 (Sep – Nov 2027)
 
 ### Week 40 (w/c 30 Aug 2027): Thu 2 Sep 2027, 10:27
-- **Title:** An autumn TMV review checklist for London facilities managers
-- **Slug:** `autumn-tmv-review-checklist-london` (`"date": "2027-09-02 10:27"`)
-- **Search intent:** What should go into an autumn review of TMVs before winter?
-- **Seasonal hook:** September return and autumn planning.
-- **Supports:** Asset registers & scheduling (tmv-asset-registers.html), Compliance guide (tmv-compliance.html)
-- **Angle:** Register up to date, intervals working, failures and trends, winter risks, budget for next year. Short and printable.
+- **Title:** Moving into a London house share in September? Hot water questions to ask
+- **Slug:** `house-share-hot-water-questions-london` (`"date": "2027-09-02 10:27"`)
+- **Search intent:** What should tenants ask a landlord about hot water safety before moving into a London house share?
+- **Seasonal hook:** September moves and new tenancies.
+- **Supports:** Compliance guide (tmv-compliance.html)
+- **Angle:** Tenant-facing: who looks after the hot water, is there a TMV on the bath, what to do if it runs too hot. Friendly, practical, no legal overstatement.
 - **Status:** planned
 
 ### Week 41 (w/c 6 Sep 2027): Mon 6 Sep 2027, 19:48
@@ -454,12 +459,12 @@ centres; portfolio asset register; TMVs after a burst main or frozen pipe; stude
 - **Status:** planned
 
 ### Week 49 (w/c 1 Nov 2027): Fri 5 Nov 2027, 13:26
-- **Title:** Turning hot water down to save energy in London blocks? Read this first
-- **Slug:** `turning-hot-water-down-energy-tmvs-london` (`"date": "2027-11-05 13:26"`)
-- **Search intent:** Can we lower hot water temperatures to cut energy bills without causing problems?
-- **Seasonal hook:** Heating season and energy bills.
-- **Supports:** Compliance guide (tmv-compliance.html), TMV servicing (tmv-servicing.html)
-- **Angle:** Why stored hot water stays at 60°C for Legionella control, why TMVs do the blending at the outlet, and safer ways to save energy.
+- **Title:** Office-to-residential conversions in London: TMVs to look out for
+- **Slug:** `office-to-resi-conversion-tmvs-london` (`"date": "2027-11-05 13:26"`)
+- **Search intent:** What TMV issues come up when offices are converted into flats?
+- **Seasonal hook:** Autumn, as conversion schemes complete.
+- **Supports:** Installation (tmv-installation.html), Asset registers & scheduling (tmv-asset-registers.html)
+- **Angle:** Re-used office plant and long risers, new bathrooms in every flat, commissioning records, who takes over servicing. No claims about specific schemes.
 - **Status:** planned
 
 ### Week 50 (w/c 8 Nov 2027): Tue 9 Nov 2027, 18:41
