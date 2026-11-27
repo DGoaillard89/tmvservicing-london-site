@@ -701,6 +701,12 @@ def main():
             stale.unlink()
             print(f"Removed stale preview of queued post: {q['path']}")
         print(f"Queued (not built until {q['post']['date']} London): {q['path']}")
+    # blog/ only ever holds generated pages: drop any whose source has gone (renamed or deleted post).
+    wanted = {p["path"] for p in pages}
+    for f in sorted((ROOT / "blog").glob("*.html")):
+        if f"blog/{f.name}" not in wanted and not any(q["path"] == f"blog/{f.name}" for q in queued):
+            f.unlink()
+            print(f"Removed orphaned page with no source: blog/{f.name}")
     # Newest first. "seq" breaks ties when two posts share a datetime (higher = later).
     posts = sorted([p for p in pages if p.get("post")], key=lambda p: (post_dt(p), p["post"].get("seq", 0)), reverse=True)
     # Never link to a queued post from anything that is published.
